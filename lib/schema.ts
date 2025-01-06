@@ -9,3 +9,7 @@ export const schemaClient = z.object({
     services : z.string({required_error:'Service Wajib Di Pilih'}),
     telepon : z.string({required_error:'Telepon Wajib Di Isi'})
 })
+
+export const schemaClientEdit = schemaClient.extend({
+    id: z.number({required_error:'Client ID is Required'})
+})

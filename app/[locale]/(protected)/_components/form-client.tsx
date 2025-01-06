@@ -28,12 +28,23 @@ import {
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { AlertCircle } from "lucide-react";
 import { stat } from "fs";
+import { ReactNode } from "react";
+import { Client } from "@prisma/client";
+
+interface FormClientPages {
+  children:ReactNode,
+  type: 'ADD' | 'EDIT',
+  data? : Client| null
+}
 
 const initialState: ActionResult = {
   error: "",
 };
 
-export function AddClient() {
+export function AddClient({children,type,data}:FormClientPages) {
+
+  // const updateClientWithID = (_:unknown,formData:FormData) =>
+
   const [state, formAction] = useFormState(postClient, initialState);
   return (
     <form action={formAction} className="w-2/3 space-y-6">
