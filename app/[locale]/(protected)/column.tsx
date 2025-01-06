@@ -35,7 +35,7 @@ export const columns: ColumnDef<TColumn>[] = [
         header:'Category',
         cell: ({row}) =>{
             const value: string = row.getValue("category")
-            return <div className={`bg-slate-950 font-bold w-fit px-[1vw] py-[0.5vw] rounded-full text-center text-white ${value === 'Avond'? 'bg-[#0030FF]' : 'bg-[#EBE9DD] text-[#C94129]'}`}>{value}</div>
+            return <div className={`font-bold w-fit px-[1vw] py-[0.5vw] rounded-full text-center text-white ${value === 'Avond'? 'bg-[#0030FF]' : 'bg-[#C94129] '}`}>{value}</div>
         }
     },
     {

@@ -44,7 +44,7 @@ model Client {
   brand     String  @db.VarChar(255)
   telepon   String  @db.VarChar(100)
   category  BrandCategory  @default(Avond)
-  address   String  @db.VarChar()
+  address   String  @db.VarChar(255)
   services  OurServices @default(Branding)
 
   created_at DateTime @default(now())

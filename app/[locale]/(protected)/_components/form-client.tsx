@@ -1,10 +1,5 @@
 "use client";
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-
-import { toast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -17,115 +12,146 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { ActionResult } from "@/types";
+import { error } from "console";
+import { useFormState } from "react-dom";
 
-const FormSchema = z.object({
-  username: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
-  }),
-});
+import { string } from "zod";
+import { postClient } from "../lib/action";
+import { Select } from "@/components/ui/select";
+import {
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@radix-ui/react-select";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { AlertCircle } from "lucide-react";
+import { stat } from "fs";
+
+const initialState: ActionResult = {
+  error: "",
+};
 
 export function AddClient() {
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
-    defaultValues: {
-      username: "",
-    },
-  });
-
-  function onSubmit(data: z.infer<typeof FormSchema>) {
-    toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-    });
-  }
-
+  const [state, formAction] = useFormState(postClient, initialState);
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-6">
-        <FormField
-          control={form.control}
-          name="username"
-          render={({ field }) => (
-            <FormItem>
-              <div className="grid grid-cols-2 justify-between flex-wrap items-center gap-7">
-                <div className="w-full">
-                  <FormLabel>Nama Client</FormLabel>
-                  <FormControl className="mt-3">
-                    <Input placeholder="John Doe" />
-                  </FormControl>
-                </div>
+    <form action={formAction} className="w-2/3 space-y-6">
+      {state.error !== "" && (
+        <Alert variant="soft" className="flex items-center">
+          <AlertCircle className="h-6 w-6" />
+          <AlertTitle className="mb-0">Error</AlertTitle>
+          <AlertDescription>{state.error}</AlertDescription>
+        </Alert>
+      )}
+      <div className="lg:grid flex lg:grid-cols-2 justify-between flex-wrap items-top gap-7">
+        <div className="w-full">
+          <label htmlFor="client-name" className="block">
+            Nama Client
+          </label>
+          <div className="mt-3">
+            <input
+              id="client-name"
+              name="client-name"
+              placeholder="John Doe"
+              className="input border border-black px-[1vw] rounded-md py-[0.5vw]"
+              type="text"
+            />
+          </div>
+        </div>
 
-                <div className="w-full">
-                  <FormLabel>Nama Brand</FormLabel>
-                  <FormControl className="mt-3">
-                    <Input placeholder="Avond Studio" />
-                  </FormControl>
-                </div>
+        <div className="w-full">
+          <label htmlFor="brand-name" className="block">
+            Nama Brand
+          </label>
+          <div className="mt-3">
+            <input
+              id="brand-name"
+              name="brand-name"
+              placeholder="Avond Studio"
+              className="input border border-black px-[1vw] rounded-md py-[0.5vw]"
+              type="text"
+            />
+          </div>
+        </div>
 
-                <div className="w-full">
-                  <FormLabel>Email</FormLabel>
-                  <FormControl className="mt-3">
-                    <Input placeholder="Avond Studio" />
-                  </FormControl>
-                </div>
+        <div className="w-full">
+          <label htmlFor="email" className="block">
+            Email
+          </label>
+          <div className="mt-3">
+            <input
+              id="email"
+              name="email"
+              placeholder="example@domain.com"
+              className="input border border-black px-[1vw] rounded-md py-[0.5vw]"
+              type="email"
+            />
+          </div>
+        </div>
 
-                <div className="w-full">
-                  <FormLabel>Telepon</FormLabel>
-                  <FormControl className="mt-3">
-                    <Input placeholder="+62 000 000 0000" />
-                  </FormControl>
-                </div>
+        <div className="w-full">
+          <label htmlFor="phone" className="block">
+            Telepon
+          </label>
+          <div className="mt-3">
+            <input
+              id="phone"
+              name="phone"
+              placeholder="+62 000 000 0000"
+              className="input border border-black px-[1vw] rounded-md py-[0.5vw]"
+              type="tel"
+            />
+          </div>
+        </div>
 
-                <div className="w-full col-span-2">
-                  <FormLabel>Address</FormLabel>
-                  <FormControl className="mt-3">
-                    <Input placeholder="Ruko Rungkut Megah, Jl. Rungkut, Surabaya" />
-                  </FormControl>
-                </div>
+        <div className="w-full col-span-2">
+          <label htmlFor="address" className="block">
+            Address
+          </label>
+          <div className="mt-3">
+            <input
+              id="address"
+              name="address"
+              placeholder="Ruko Rungkut Megah, Jl. Rungkut, Surabaya"
+              className="input border border-black px-[1vw] rounded-md py-[0.5vw]"
+              type="text"
+            />
+          </div>
+        </div>
 
-                <div>
-                  <FormLabel>Client dari</FormLabel>
-                  <FormControl className="mt-4">
-                    <RadioGroup
-                      onValueChange={field.onChange}
-                      defaultValue={field.value}
-                      className="flex flex-col space-y-1"
-                    >
-                      <FormItem className="flex items-center space-x-3 space-y-0">
-                        <FormControl>
-                          <RadioGroupItem value="all" />
-                        </FormControl>
-                        <FormLabel className="font-normal">
-                          All new messages
-                        </FormLabel>
-                      </FormItem>
-                      <FormItem className="flex items-center space-x-3 space-y-0">
-                        <FormControl>
-                          <RadioGroupItem value="mentions" />
-                        </FormControl>
-                        <FormLabel className="font-normal">
-                          Direct messages and mentions
-                        </FormLabel>
-                      </FormItem>
-                      <FormItem className="flex items-center space-x-3 space-y-0">
-                        <FormControl>
-                          <RadioGroupItem value="none" />
-                        </FormControl>
-                        <FormLabel className="font-normal">Nothing</FormLabel>
-                      </FormItem>
-                    </RadioGroup>
-                  </FormControl>
-                </div>
-              </div>
-            </FormItem>
-          )}
-        />
-        <Button type="submit">Submit</Button>
-      </form>
-    </Form>
+        <div>
+          <label className="block">Client dari</label>
+          <div className="mt-4">
+            <select
+              name="clientFrom"
+              id="clientFrom"
+              className="border border-black rounded-md px-[1vw] py-[0.5vw]"
+            >
+              <option value="Avond">Avond</option>
+              <option value="Alter">Alter</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label className="block">Services</label>
+          <div className="mt-4">
+            <select
+              name="services"
+              id="services"
+              className="border border-black rounded-md px-[1vw] py-[0.5vw]"
+            >
+              <option value="Branding">Branding</option>
+              <option value="Website">Website</option>
+              <option value="Socmed">Social Media</option>
+              <option value="Logo">Logo System</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <Button type="submit">Save Client</Button>
+    </form>
   );
 }
