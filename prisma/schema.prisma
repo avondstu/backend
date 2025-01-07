@@ -49,4 +49,24 @@ model Client {
 
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
+}  
+
+model CompanyInformation {
+  id   Int @id @default(autoincrement())
+
+  contact String @db.VarChar(255)
+  email   String @db.VarChar(255)
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
+
+model HomePage{
+  id      Int       @id @default(autoincrement())
+  why     String    @db.VarChar(255)
+  service String[]  @db.VarChar(255)
+  
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
 }

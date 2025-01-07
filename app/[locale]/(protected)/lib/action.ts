@@ -3,6 +3,7 @@
 import prisma from "@/lib/prisma"
 import { schemaClient } from "@/lib/schema" 
 import { ActionResult } from "@/types"
+import { Action } from "@dnd-kit/core/dist/store"
 import { BrandCategory, OurServices } from "@prisma/client"
 import { redirect } from "next/navigation"
 import { prism } from "react-syntax-highlighter/dist/esm/styles/prism"
@@ -53,6 +54,27 @@ export async function postClient (
     return redirect('/')
 }
 
+export async function deleteClient(
+    _:unknown,
+    formData:FormData,
+    id:number
+):Promise<ActionResult> {
+try {
+    await prisma.client.delete({
+        where:{
+            id:id
+        }
+    })
+} catch (error) {
+    console.log(error)
+    return {
+        error: 'Data tidak bisa dihapus'
+    }
+}
+
+    return redirect('/')
+}
+
 export async function editClient(
     _:unknown,
     formData : FormData,
@@ -76,11 +98,6 @@ export async function editClient(
         }
     }
 
-    const client = await prisma.client.findFirst({
-        where: {
-            id:id
-        }
-    })
     try {
         await prisma.client.update({
             where: {

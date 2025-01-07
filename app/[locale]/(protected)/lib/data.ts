@@ -1,5 +1,6 @@
 import prisma from "@/lib/prisma";
 import { TColumn } from "../column";
+import { prism } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 export async function getClient() {
     try {
@@ -22,5 +23,20 @@ export async function getClient() {
     } catch (error) {
         console.log(error)
         return[]
+    }
+}
+
+export async function getClientWithID(id:string) {
+    try {
+        const response = await prisma.client.findFirst({
+            where:{
+                id:Number.parseInt(id)
+            }
+        })
+
+        return response
+    } catch (error) {
+        console.log(error)
+        return null
     }
 }

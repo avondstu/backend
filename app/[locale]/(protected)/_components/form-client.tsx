@@ -17,7 +17,7 @@ import { error } from "console";
 import { useFormState } from "react-dom";
 
 import { string } from "zod";
-import { postClient } from "../lib/action";
+import { editClient, postClient } from "../lib/action";
 import { Select } from "@/components/ui/select";
 import {
   SelectContent,
@@ -32,7 +32,7 @@ import { ReactNode } from "react";
 import { Client } from "@prisma/client";
 
 interface FormClientPages {
-  children:ReactNode,
+  // children:ReactNode,
   type: 'ADD' | 'EDIT',
   data? : Client| null
 }
@@ -41,11 +41,11 @@ const initialState: ActionResult = {
   error: "",
 };
 
-export function AddClient({children,type,data}:FormClientPages) {
+export function AddClient({type = 'ADD',data = null}:FormClientPages) {
 
-  // const updateClientWithID = (_:unknown,formData:FormData) =>
+  const updateClientWithID = (_:unknown,formData:FormData) => editClient(_,formData,data?.id!)
 
-  const [state, formAction] = useFormState(postClient, initialState);
+  const [state, formAction] = useFormState(type === "ADD" ? postClient : updateClientWithID, initialState);
   return (
     <form action={formAction} className="w-2/3 space-y-6">
       {state.error !== "" && (
@@ -67,6 +67,7 @@ export function AddClient({children,type,data}:FormClientPages) {
               placeholder="John Doe"
               className="input border border-black px-[1vw] rounded-md py-[0.5vw]"
               type="text"
+              defaultValue= {data?.nama}
             />
           </div>
         </div>
@@ -82,6 +83,7 @@ export function AddClient({children,type,data}:FormClientPages) {
               placeholder="Avond Studio"
               className="input border border-black px-[1vw] rounded-md py-[0.5vw]"
               type="text"
+              defaultValue={data?.brand}
             />
           </div>
         </div>
@@ -97,6 +99,7 @@ export function AddClient({children,type,data}:FormClientPages) {
               placeholder="example@domain.com"
               className="input border border-black px-[1vw] rounded-md py-[0.5vw]"
               type="email"
+              defaultValue={data?.email}
             />
           </div>
         </div>
@@ -112,6 +115,8 @@ export function AddClient({children,type,data}:FormClientPages) {
               placeholder="+62 000 000 0000"
               className="input border border-black px-[1vw] rounded-md py-[0.5vw]"
               type="tel"
+              defaultValue={data?.telepon!}
+              // disabled
             />
           </div>
         </div>
@@ -127,6 +132,7 @@ export function AddClient({children,type,data}:FormClientPages) {
               placeholder="Ruko Rungkut Megah, Jl. Rungkut, Surabaya"
               className="input border border-black px-[1vw] rounded-md py-[0.5vw]"
               type="text"
+              defaultValue={data?.address}
             />
           </div>
         </div>
@@ -137,6 +143,7 @@ export function AddClient({children,type,data}:FormClientPages) {
             <select
               name="clientFrom"
               id="clientFrom"
+              defaultValue={data?.category}
               className="border border-black rounded-md px-[1vw] py-[0.5vw]"
             >
               <option value="Avond">Avond</option>
@@ -149,6 +156,7 @@ export function AddClient({children,type,data}:FormClientPages) {
           <label className="block">Services</label>
           <div className="mt-4">
             <select
+            defaultValue={data?.services}
               name="services"
               id="services"
               className="border border-black rounded-md px-[1vw] py-[0.5vw]"

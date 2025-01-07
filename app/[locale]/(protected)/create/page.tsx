@@ -19,7 +19,7 @@ export default function CreateClient() {
                     </Button>
                 </CardHeader>
                 <CardDescription className='px-[2vw] pb-[2vw]'>
-                    {/* <AddClient type='ADD' /> */}
+                    <AddClient type='ADD' />
                 </CardDescription>
             </Card>
         </div>
