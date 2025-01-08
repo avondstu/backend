@@ -32,10 +32,10 @@ export default async function page() {
           <div className="swiper aximo-auto-slider px-[5vw] ">
             <div className="swiper-wrapper bg-[#122C29] py-[3vw] rounded-full mt-[5vw] flex justify-between items-center gap-[2vw] px-[4vw]">
 
-              {Service?.map((data) => (
+              {Service?.map((data,index) => (
                 <div key={data.id} className="swiper-slide">
                 <div className="aximo-brandlogo-item">
-                  <h4 className= {`${data.id % 2 == 0 ? 'text-white' : 'text-[#08D856]'} text-[20px] font-bold`}>{data.nama}</h4>
+                  <h4 className= {`${index % 2 ? 'text-white' : 'text-[#08D856]'} text-[20px] font-bold`}>{data.nama}</h4>
                 </div>
               </div>
               ))}

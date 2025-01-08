@@ -18,3 +18,7 @@ export const schemaHome = z.object({
     // id: z.number({required_error:'ID Is Required'}),
     why: z.string({required_error:'Wajib DI Isi'}).min(10, {message:'Text Terlalu Pendek'})
 })
+
+export const schemaService = z.object({
+    nama: z.string({required_error:'Wajib Di Isi'}).min(5,{message:'Min.5 Karakter'})
+})
