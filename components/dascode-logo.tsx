@@ -5,7 +5,7 @@ const ImageLogo = (props: IconProps) => {
     return (
         <>
             <Image
-            src='/images/logo/avond.png'
+            src={'/images/logo/avond.png'}
             width={100}
             height={100}
             alt='Logo Avond'
