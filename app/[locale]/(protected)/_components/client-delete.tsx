@@ -4,7 +4,7 @@ import { Trash } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
 import { useFormState, useFormStatus } from 'react-dom'
-import { deleteClient } from '../lib/action'
+import { deleteClient } from '../client/lib/action'
 
 const initialState: ActionResult = {
     error:''

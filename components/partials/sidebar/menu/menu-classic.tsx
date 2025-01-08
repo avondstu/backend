@@ -30,7 +30,7 @@ import { useMediaQuery } from '@/hooks/use-media-query';
 
 export function MenuClassic({ }) {
     // translate
-    const t = useTranslations("Menu")
+    // const t = useTranslations("Menu")
     const pathname = usePathname();
     const params = useParams<{ locale: string; }>();
     const direction = getLangDir(params?.locale ?? '');
@@ -38,7 +38,7 @@ export function MenuClassic({ }) {
     const isDesktop = useMediaQuery('(min-width: 1280px)')
 
 
-    const menuList = getMenuList(pathname, t);
+    const menuList = getMenuList(pathname);
     const [config, setConfig] = useConfig()
     const collapsed = config.collapsed
     const [hoverConfig] = useMenuHoverConfig();

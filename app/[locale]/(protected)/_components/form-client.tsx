@@ -17,7 +17,7 @@ import { error } from "console";
 import { useFormState } from "react-dom";
 
 import { string } from "zod";
-import { editClient, postClient } from "../lib/action";
+import { editClient, postClient } from "../client/lib/action";
 import { Select } from "@/components/ui/select";
 import {
   SelectContent,

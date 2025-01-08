@@ -28,10 +28,10 @@ export default function HorizontalMenu() {
 
   const [config] = useConfig()
 
-  const t = useTranslations("Menu");
+  // const t = useTranslations("Menu");
   const pathname = usePathname();
 
-  const menuList = getHorizontalMenuList(pathname, t)
+  const menuList = getHorizontalMenuList(pathname)
 
   const [openDropdown, setOpenDropdown] = React.useState<boolean>(false);
 

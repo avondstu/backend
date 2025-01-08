@@ -13,3 +13,8 @@ export const schemaClient = z.object({
 export const schemaClientEdit = schemaClient.extend({
     id: z.number({required_error:'Client ID is Required'})
 })
+
+export const schemaHome = z.object({
+    // id: z.number({required_error:'ID Is Required'}),
+    why: z.string({required_error:'Wajib DI Isi'}).min(10, {message:'Text Terlalu Pendek'})
+})

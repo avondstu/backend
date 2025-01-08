@@ -1,5 +1,5 @@
 import React from 'react'
-import { AddClient } from '../../_components/form-client'
+import { AddClient } from '../../../_components/form-client' 
 import { getClientWithID } from '../../lib/data'
 import { redirect } from 'next/navigation'
 

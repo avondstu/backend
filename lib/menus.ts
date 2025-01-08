@@ -30,19 +30,64 @@ export type Group = {
   id: string;
 };
 
-export function getMenuList(pathname: string, t: any): Group[] {
+export function getMenuList(pathname: string,): Group[] {
 
   return [
     {
-      groupLabel: t("dashboard"),
+      groupLabel: ("CRM"),
       id: "dashboard",
       menus: [
         {
-          id: "dashboard",
-          href: "/",
-          label: t("dashboard"),
-          active: pathname.includes("/"),
-          icon: "heroicons-outline:home",
+          id: "client",
+          href: "/client",
+          label: ("client list"),
+          active: pathname.includes("/client"),
+          icon: "heroicons-outline",
+          submenus: [],
+        },
+      ],
+    },
+
+    {
+      groupLabel: ("Pages"),
+      id: "home",
+      menus: [
+        {
+          id: "home",
+          href: "/pages/home",
+          label: ("home"),
+          active: pathname.includes("/pages/home"),
+          icon: "heroicons-outline",
+          submenus: [],
+        },
+        {
+          id: "about",
+          href: "/pages/about",
+          label: ("about"),
+          active: pathname.includes("/pages/about"),
+          icon: "heroicons-outline",
+          submenus: [],
+        },
+      ],
+    },
+    {
+      groupLabel: ("company"),
+      id: "company",
+      menus: [
+        {
+          id: "information",
+          href: "/company/information",
+          label: ("information"),
+          active: pathname.includes("/company/information"),
+          icon: "heroicons-outline",
+          submenus: [],
+        },
+        {
+          id: "services",
+          href: "/company/services",
+          label: ("services"),
+          active: pathname.includes("/company/services"),
+          icon: "heroicons-outline",
           submenus: [],
         },
       ],
@@ -50,16 +95,16 @@ export function getMenuList(pathname: string, t: any): Group[] {
     
   ];
 }
-export function getHorizontalMenuList(pathname: string, t: any): Group[] {
+export function getHorizontalMenuList(pathname: string,): Group[] {
   return [
     {
-      groupLabel: t("dashboard"),
+      groupLabel: ("dashboard"),
       id: "dashboard",
       menus: [
         {
           id: "dashboard",
           href: "/",
-          label: t("dashboard"),
+          label: ("dashboard"),
           active: pathname.includes("/"),
           icon: "heroicons-outline:home",
           submenus:[],

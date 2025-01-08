@@ -61,10 +61,18 @@ model CompanyInformation {
   updated_at DateTime @updatedAt
 }
 
+model BrandServices {
+  id    Int @id @default(autoincrement())
+  nama  String @db.VarChar(255)
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
+
 model HomePage{
   id      Int       @id @default(autoincrement())
   why     String    @db.VarChar(255)
-  service String[]  @db.VarChar(255)
+
   
 
   created_at DateTime @default(now())

@@ -5,7 +5,7 @@ import { BrandCategory, OurServices } from '@prisma/client'
 import {ColumnDef} from '@tanstack/react-table'
 import { Edit, Eye, Trash } from 'lucide-react'
 import Link from 'next/link'
-import FormDelete from './_components/client-delete'
+import FormDelete from '../_components/client-delete'
 
 export type TColumn = {
     id: number
@@ -47,12 +47,12 @@ export const columns: ColumnDef<TColumn>[] = [
             return (
                 <div className='space-x-4 inline-flex'>
                     <Button size='sm' className='bg-gray-600' asChild>
-                        <Link href={`/detail/${client.id}`}>
+                        <Link href={`/client/detail/${client.id}`}>
                             <Eye className='w-4 h-4 mr-2' /> Detail
                         </Link>
                     </Button>
                     <Button size='sm' className='bg-blue-600' asChild>
-                        <Link href={`/edit/${client.id}`}>
+                        <Link href={`/client/edit/${client.id}`}>
                             <Edit className='w-4 h-4 mr-2' />
                         </Link>
                     </Button>

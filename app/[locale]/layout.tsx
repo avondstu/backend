@@ -33,7 +33,7 @@ export default async function RootLayout({
     <html lang={locale} dir={direction}>
       <body className={`${inter.className} dashcode-app`}>
         {/* <NextIntlClientProvider messages={messages} locale={locale}> */}
-          <AuthProvider>
+          {/* <AuthProvider> */}
             <ThemeProvider attribute="class"
 
               defaultTheme="light">
@@ -47,7 +47,7 @@ export default async function RootLayout({
               <Toaster />
               <SonnerToaster />
             </ThemeProvider>
-          </AuthProvider>
+          {/* </AuthProvider> */}
         {/* </NextIntlClientProvider> */}
       </body>
     </html>
