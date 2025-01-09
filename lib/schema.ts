@@ -16,9 +16,18 @@ export const schemaClientEdit = schemaClient.extend({
 
 export const schemaHome = z.object({
     // id: z.number({required_error:'ID Is Required'}),
-    why: z.string({required_error:'Wajib DI Isi'}).min(10, {message:'Text Terlalu Pendek'})
+    tagline: z.string({required_error:'Wajib DI Isi'}).min(10, {message:'Text Terlalu Pendek'}),
+    headline: z.string({required_error:'Wajib DI Isi'}).min(10, {message:'Text Terlalu Pendek'}),
+    description: z.string({required_error:'Wajib DI Isi'}).min(10, {message:'Text Terlalu Pendek'}),
+    mainButton: z.string({required_error:'Wajib DI Isi'}).min(5, {message:'Text Terlalu Pendek'}),
+    mainLink: z.string({required_error:'Wajib DI Isi'}),
+    secondButton: z.string({required_error:'Wajib DI Isi'}).min(5, {message:'Text Terlalu Pendek'}),
+    secondLink: z.string({required_error:'Wajib DI Isi'}),
+    // layanan: z.string({required_error:'Wajib DI Isi'}).min(10, {message:'Text Terlalu Pendek'})
 })
 
 export const schemaService = z.object({
-    nama: z.string({required_error:'Wajib Di Isi'}).min(5,{message:'Min.5 Karakter'})
+    layanan: z.string({required_error:'Wajib Di Isi'}).min(5,{message:'Min.5 Karakter'}),
+    description: z.string({required_error:'Wajib Di Isi'}).min(10,{message:'Min.5 Karakter'})
+
 })

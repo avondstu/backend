@@ -32,7 +32,7 @@ export default function FormService({data}:FormServiceParam) {
           <AlertDescription>{state.error}</AlertDescription>
         </Alert>
       )}
-      <div className="lg:grid flex lg:grid-cols-2 justify-between flex-wrap items-top gap-7">
+      <div className="lg:grid flex lg:grid-cols-3 justify-between flex-wrap items-top gap-7">
         <div className="w-full">
           <label htmlFor="nama-services" className="block">
             Nama Services
@@ -42,9 +42,25 @@ export default function FormService({data}:FormServiceParam) {
               id="nama-services"
               name="nama-services"
               placeholder="Service"
-              className="input border border-black px-[1vw] rounded-md py-[0.5vw]"
+              className="input border w-full text-black border-black px-[1vw] rounded-md py-[0.5vw]"
               type="text"
-              defaultValue= {data?.nama}
+              defaultValue= {data?.layanan}
+            />
+          </div>
+        </div>
+
+        <div className="w-full col-span-2">
+          <label htmlFor="desc-services" className="block">
+            Deskripsi Layanan
+          </label>
+          <div className="mt-3">
+            <input
+              id="desc-services"
+              name="desc-services"
+              placeholder="Service"
+              className="input border w-full text-black border-black px-[1vw] rounded-md py-[0.5vw]"
+              type="text"
+              defaultValue= {data?.description}
             />
           </div>
         </div>

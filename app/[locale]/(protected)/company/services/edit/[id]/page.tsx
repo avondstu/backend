@@ -24,7 +24,6 @@ export default async function EditServices({params}:EditPageProp) {
                     <FormService data={data}/>
                 </CardDescription>
             </Card>
-        
     </section>
   )
 }

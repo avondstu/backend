@@ -8,7 +8,8 @@ export async function getServices() {
         const response: TColumn[] = client.map((client) => {
             return {
                 id: client.id,
-                service: client.nama
+                service: client.layanan,
+                description: client.description
             }
         })
 

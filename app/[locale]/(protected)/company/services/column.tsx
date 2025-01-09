@@ -16,6 +16,10 @@ export const columns: ColumnDef<TColumn>[] = [
         header:'Service'
     },
     {
+        accessorKey: 'description',
+        header:'Description'
+    },
+    {
         id:"actions",
         cell: ({row}) => {
             const client = row.original

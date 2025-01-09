@@ -1,52 +1,36 @@
-"use client";
+"use client"
 
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
-import { AlertCircle } from "lucide-react";
-import React from "react";
-import { getHomeData } from "../lib/data";
-import { ActionResult } from "@/types";
-import { useFormState, useFormStatus } from "react-dom";
-import { HomePage } from "@prisma/client";
-import { editHome } from "../lib/action";
-
-interface FormHomePages {
-  data?: HomePage | null;
-}
-
-const initialState: ActionResult = {
-  error: "",
-};
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
+import { Button } from '@/components/ui/button'
+import { Textarea } from '@/components/ui/textarea'
+import { AlertCircle } from 'lucide-react'
+import React from 'react'
+import { useFormStatus } from 'react-dom'
 
 function SaveButton() {
-  const { pending } = useFormStatus();
+    const { pending } = useFormStatus();
+    return (
+      <Button type="submit" disabled={pending}>
+        {pending ? "Loading" : "Save Update"}
+      </Button>
+    );
+  }
+
+
+export default function ServiceForm() {
   return (
-    <Button type="submit" disabled={pending}>
-      {pending ? "Loading" : "Save Update"}
-    </Button>
-  );
-}
-
-export default function FormHome({ data }: FormHomePages) {
-  const EditHomePage = (_: unknown, formData: FormData) =>
-    editHome(_, formData, 1);
-
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [state, formAction] = useFormState(EditHomePage, initialState);
-
-  return (
+    <>
     <section>
-      <form action={formAction}>
-        {state.error !== "" && (
+    <form action="">
+        {/* {state.error !== "" && (
           <Alert variant="soft" className="flex items-center">
             <AlertCircle className="h-6 w-6" />
             <AlertTitle className="mb-0">Error</AlertTitle>
             <AlertDescription>{state.error}</AlertDescription>
           </Alert>
-        )}
+        )} */}
 
-        <div className="lg:grid flex lg:grid-cols-2 pt-[2vw] justify-between flex-wrap items-top gap-7">
+<div className="lg:grid flex lg:grid-cols-2 pt-[2vw] justify-between flex-wrap items-top gap-7">
           <div className="w-full ">
             <label htmlFor="taglone" className="block">
               Tagline
@@ -58,7 +42,7 @@ export default function FormHome({ data }: FormHomePages) {
                 placeholder="Company Tagline"
                 className="input border text-black border-black px-[1vw] w-full rounded-md py-[0.5vw]"
                 type="text"
-                defaultValue={data?.tagline}
+                // defaultValue={data?.tagline}
               />
             </div>
           </div>
@@ -74,7 +58,7 @@ export default function FormHome({ data }: FormHomePages) {
                 placeholder="Company Headline"
                 className="input border text-black border-black px-[1vw] w-full rounded-md py-[0.5vw]"
                 type="text"
-                defaultValue={data?.headline}
+                // defaultValue={data?.headline}
               />
             </div>
           </div>
@@ -87,7 +71,7 @@ export default function FormHome({ data }: FormHomePages) {
               <Textarea
                 id="desc"
                 name="desc"
-                defaultValue={data?.desc}
+                // defaultValue={data?.desc}
                 placeholder="Why Effektiv is effective?"
                 className="input border border-black px-[1vw] rounded-md py-[0.5vw]"
               ></Textarea>
@@ -105,7 +89,7 @@ export default function FormHome({ data }: FormHomePages) {
                 placeholder="Banner Main Button"
                 className="input border text-black border-black px-[1vw] w-full rounded-md py-[0.5vw]"
                 type="text"
-                defaultValue={data?.mainButton}
+                // defaultValue={data?.mainButton}
               />
             </div>
 
@@ -119,7 +103,7 @@ export default function FormHome({ data }: FormHomePages) {
                 placeholder="Main Button Link"
                 className="input border text-black border-black px-[1vw] w-full rounded-md py-[0.5vw]"
                 type="text"
-                defaultValue={data?.mainLink}
+                // defaultValue={data?.mainLink}
               />
             </div>
             
@@ -136,7 +120,7 @@ export default function FormHome({ data }: FormHomePages) {
                 placeholder="Banner Secondary Button "
                 className="input border text-black border-black px-[1vw] w-full rounded-md py-[0.5vw]"
                 type="text"
-                defaultValue={data?.secondButton}
+                // defaultValue={data?.secondButton}
               />
             </div>
 
@@ -150,15 +134,16 @@ export default function FormHome({ data }: FormHomePages) {
                 placeholder="Secondary Button Link"
                 className="input border text-black border-black px-[1vw] w-full rounded-md py-[0.5vw]"
                 type="text"
-                defaultValue={data?.secondLink}
+                // defaultValue={data?.secondLink}
               />
             </div>
             
           </div>
         </div>
 
-        <SaveButton/>
-      </form>
+        <Button type="submit">Save Update</Button>
+    </form>
     </section>
-  );
+    </>
+  )
 }

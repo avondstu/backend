@@ -12,7 +12,14 @@ export async function editHome(
 ):Promise<ActionResult> {
 
     const validate = schemaHome.safeParse({
-        why: formData.get('why')
+        tagline: formData.get('tagline'),
+        headline: formData.get('headline'),
+        description: formData.get('desc'),
+        mainButton: formData.get('mainButton'),
+        mainLink: formData.get('mainLink'),
+        secondButton: formData.get('secondButton'),
+        secondLink: formData.get('secondLink'),
+
     })
 
     if(!validate.success) {
@@ -27,7 +34,13 @@ export async function editHome(
                 id:id
             },
             data:{
-                why:validate.data.why
+                tagline: validate.data.tagline,
+                headline: validate.data.headline,
+                desc: validate.data.description,
+                mainButton: validate.data.mainButton,
+                mainLink: validate.data.mainLink,
+                secondButton:validate.data.secondButton,
+                secondLink:validate.data.secondLink
             }
         })
     } catch (error) {

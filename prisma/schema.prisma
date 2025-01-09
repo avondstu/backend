@@ -62,16 +62,23 @@ model CompanyInformation {
 }
 
 model BrandServices {
-  id    Int @id @default(autoincrement())
-  nama  String @db.VarChar(255)
+  id          Int @id @default(autoincrement())
+  layanan     String @db.VarChar(255)
+  description String @db.VarChar(255)
 
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 }
 
 model HomePage{
-  id      Int       @id @default(autoincrement())
-  why     String    @db.VarChar(255)
+  id            Int    @id @default(autoincrement())
+  tagline       String @db.VarChar(255)
+  headline      String @db.VarChar(255)
+  desc          String @db.VarChar(255)
+  mainButton    String @db.VarChar(255)
+  mainLink      String @db.VarChar(255)
+  secondButton  String @db.VarChar(255)
+  secondLink    String @db.VarChar(255)
 
   
 

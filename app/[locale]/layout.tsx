@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import "./theme.css"
+import "./theme.css";
+import "./style.css";
+import "./output.css";
+import "./slick.min.css";
 import { ThemeProvider } from "@/providers/theme-provider";
 import MountedProvider from "@/providers/mounted.provider";
 import { Toaster } from '@/components/ui/toaster'
@@ -15,8 +18,8 @@ import DirectionProvider from "@/providers/direction-provider";
 import AuthProvider from "@/providers/auth.provider";
 
 export const metadata: Metadata = {
-  title: "Dashcode admin Template",
-  description: "created by codeshaper",
+  title: "Avond Studio",
+  description: "Avond Studio Admin Dashboard",
 };
 
 export default async function RootLayout({

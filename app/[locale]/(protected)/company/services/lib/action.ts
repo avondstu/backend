@@ -13,7 +13,9 @@ export async function editServices(
 ):Promise<ActionResult> {
 
     const validate = schemaService.safeParse({
-        nama:formData.get('nama-services'),
+        layanan:formData.get('nama-services'),
+        description:formData.get('desc-services'),
+
     })
 
     if(!validate.success){
@@ -28,7 +30,8 @@ export async function editServices(
                 id:id
             },
             data :{
-                nama: validate.data.nama
+                layanan: validate.data.layanan,
+                description: validate.data.description
             }
         })
     } catch (error) {

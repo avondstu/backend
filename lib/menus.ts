@@ -61,6 +61,14 @@ export function getMenuList(pathname: string,): Group[] {
           submenus: [],
         },
         {
+          id: "service",
+          href: "/pages/service",
+          label: ("service"),
+          active: pathname.includes("/pages/service"),
+          icon: "heroicons-outline",
+          submenus: [],
+        },
+        {
           id: "about",
           href: "/pages/about",
           label: ("about"),
@@ -68,6 +76,7 @@ export function getMenuList(pathname: string,): Group[] {
           icon: "heroicons-outline",
           submenus: [],
         },
+        
       ],
     },
     {
