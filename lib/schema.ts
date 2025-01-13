@@ -16,18 +16,33 @@ export const schemaClientEdit = schemaClient.extend({
 
 export const schemaHome = z.object({
     // id: z.number({required_error:'ID Is Required'}),
-    tagline: z.string({required_error:'Wajib DI Isi'}).min(10, {message:'Text Terlalu Pendek'}),
-    headline: z.string({required_error:'Wajib DI Isi'}).min(10, {message:'Text Terlalu Pendek'}),
-    description: z.string({required_error:'Wajib DI Isi'}).min(10, {message:'Text Terlalu Pendek'}),
-    mainButton: z.string({required_error:'Wajib DI Isi'}).min(5, {message:'Text Terlalu Pendek'}),
+    tagline: z.string({required_error:'Wajib DI Isi'}).min(10, {message:'Text Terlalu Pendek (min. 10 Karakter'}),
+    headline: z.string({required_error:'Wajib DI Isi'}).min(10, {message:'Text Terlalu Pendek (min. 10 Karakter'}),
+    description: z.string({required_error:'Wajib DI Isi'}).min(10, {message:'Text Terlalu Pendek (min. 10 Karakter'}),
+    mainButton: z.string({required_error:'Wajib DI Isi'}).min(5, {message:'Text Terlalu Pendek (min. 5 Karakter)'}),
     mainLink: z.string({required_error:'Wajib DI Isi'}),
-    secondButton: z.string({required_error:'Wajib DI Isi'}).min(5, {message:'Text Terlalu Pendek'}),
+    secondButton: z.string({required_error:'Wajib DI Isi'}).min(5, {message:'Text Terlalu Pendek (min. 5 Karakter)'}),
     secondLink: z.string({required_error:'Wajib DI Isi'}),
     // layanan: z.string({required_error:'Wajib DI Isi'}).min(10, {message:'Text Terlalu Pendek'})
 })
 
 export const schemaService = z.object({
     layanan: z.string({required_error:'Wajib Di Isi'}).min(5,{message:'Min.5 Karakter'}),
-    description: z.string({required_error:'Wajib Di Isi'}).min(10,{message:'Min.5 Karakter'})
+    description: z.string({required_error:'Wajib Di Isi'}).min(10,{message:'Min.10 Karakter'})
+})
 
+export const schemaServicePage = z.object({
+    tagline : z.string({required_error:'Wajib Di Isi'}),
+    headline : z.string({required_error:'Wajib Di Isi'}).min(5,{message:'Min.5 Karakter'}),
+    description: z.string({required_error:'Wajib Di Isi'}).min(10,{message:'Min. 10 Karakter'})
+})
+
+export const schemaCompany = z.object({
+    name : z.string({required_error:'Wajib Di Isi'}),
+    whatsapp : z.string({required_error:'Wajib Di Isi'}),
+    email : z.string({required_error:'Wajib Di Isi'}),
+    iglink : z.string({required_error: 'Wajib Di Isi'}),
+    tiktoklink : z.string({required_error:'Wajib Di Isi'}),
+    linkedin : z.string({required_error:'Wajib Di Isi'}),
+    description : z.string({required_error:'Wajib Di Isi'}).min(20,{message:'Min. 20 Karakter'}),
 })

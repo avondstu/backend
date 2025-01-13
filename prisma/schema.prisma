@@ -54,8 +54,14 @@ model Client {
 model CompanyInformation {
   id   Int @id @default(autoincrement())
 
-  contact String @db.VarChar(255)
+  name    String @db.VarChar(255)
+  whatsapp String @db.VarChar(255)
   email   String @db.VarChar(255)
+  iglink  String @db.VarChar(255)
+  tiktoklink  String @db.VarChar(255)
+  linkedin  String @db.VarChar(255)
+  description String @db.VarChar(255)
+  
 
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
@@ -79,6 +85,18 @@ model HomePage{
   mainLink      String @db.VarChar(255)
   secondButton  String @db.VarChar(255)
   secondLink    String @db.VarChar(255)
+
+  
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
+
+model ServicePage {
+  id            Int    @id @default(autoincrement())
+  tagline       String @db.VarChar(255)
+  headline      String @db.VarChar(255)
+  desc          String @db.VarChar(255)
 
   
 

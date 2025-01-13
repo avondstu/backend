@@ -2,8 +2,12 @@ import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/ca
 import React from 'react'
 import ServiceForm from './_component/form-service'
 import { Button } from 'react-day-picker';
+import { getServPageData } from './lib/data';
 
-export default function ServicePage() {
+export default async function ServicePage() {
+
+  const pageData = await getServPageData()
+
   return (
     <section className='pt-[1vw]'>
         <Card x-chunk="dashboard-06-chunk-0">
@@ -11,7 +15,7 @@ export default function ServicePage() {
                     <CardTitle>Edit Service Page Content</CardTitle>
                 </CardHeader>
                 <CardDescription className='px-[2vw] pb-[3vw]'>
-                {/* <ServiceForm/> */}
+                <ServiceForm data={pageData}/>
                 </CardDescription>
             </Card>
     </section>

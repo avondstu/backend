@@ -3,9 +3,20 @@
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
+import { ActionResult } from '@/types'
+import { ServicePage } from '@prisma/client'
 import { AlertCircle } from 'lucide-react'
 import React from 'react'
-import { useFormStatus } from 'react-dom'
+import { useFormState, useFormStatus } from 'react-dom'
+import { editServPage } from '../lib/action'
+
+interface formServicePages{
+  data?: ServicePage | null
+}
+
+const initialState: ActionResult ={
+  error:"",
+}
 
 function SaveButton() {
     const { pending } = useFormStatus();
@@ -17,18 +28,22 @@ function SaveButton() {
   }
 
 
-export default function ServiceForm() {
+export default function ServiceForm({data}: formServicePages) {
+  const EditServ = (_:unknown, formData:FormData) => editServPage(_,formData,1);
+
+  const [state, formAction] = useFormState(EditServ,initialState)
+ 
   return (
     <>
     <section>
-    <form action="">
-        {/* {state.error !== "" && (
+    <form action={formAction}>
+        {state.error !== "" && (
           <Alert variant="soft" className="flex items-center">
             <AlertCircle className="h-6 w-6" />
             <AlertTitle className="mb-0">Error</AlertTitle>
             <AlertDescription>{state.error}</AlertDescription>
           </Alert>
-        )} */}
+        )}
 
 <div className="lg:grid flex lg:grid-cols-2 pt-[2vw] justify-between flex-wrap items-top gap-7">
           <div className="w-full ">
@@ -42,7 +57,7 @@ export default function ServiceForm() {
                 placeholder="Company Tagline"
                 className="input border text-black border-black px-[1vw] w-full rounded-md py-[0.5vw]"
                 type="text"
-                // defaultValue={data?.tagline}
+                defaultValue={data?.tagline}
               />
             </div>
           </div>
@@ -58,90 +73,28 @@ export default function ServiceForm() {
                 placeholder="Company Headline"
                 className="input border text-black border-black px-[1vw] w-full rounded-md py-[0.5vw]"
                 type="text"
-                // defaultValue={data?.headline}
+                defaultValue={data?.headline}
               />
             </div>
           </div>
 
           <div className="w-full col-span-2 mb-[1vw]">
-            <label htmlFor="desc" className="block">
+            <label htmlFor="description" className="block">
               Description
             </label>
             <div className="mt-3">
               <Textarea
-                id="desc"
-                name="desc"
-                // defaultValue={data?.desc}
-                placeholder="Why Effektiv is effective?"
+                id="description"
+                name="description"
+                defaultValue={data?.desc}
+                placeholder="Service Section Description"
                 className="input border border-black px-[1vw] rounded-md py-[0.5vw]"
               ></Textarea>
             </div>
           </div>
-
-          <div className="w-full mb-[2vw]">
-            <label htmlFor="mainButton" className="block">
-              Main Button
-            </label>
-            <div className="mt-3">
-              <input
-                id="mainButton"
-                name="mainButton"
-                placeholder="Banner Main Button"
-                className="input border text-black border-black px-[1vw] w-full rounded-md py-[0.5vw]"
-                type="text"
-                // defaultValue={data?.mainButton}
-              />
-            </div>
-
-            <label htmlFor="mainLink" className="block mt-[1vw]">
-              Link Button
-            </label>
-            <div className="mt-3">
-              <input
-                id="mainLink"
-                name="mainLink"
-                placeholder="Main Button Link"
-                className="input border text-black border-black px-[1vw] w-full rounded-md py-[0.5vw]"
-                type="text"
-                // defaultValue={data?.mainLink}
-              />
-            </div>
-            
-          </div>
-
-          <div className="w-full mb-[2vw]">
-            <label htmlFor="secondButton" className="block">
-              Secondary Button
-            </label>
-            <div className="mt-3">
-              <input
-                id="secondButton"
-                name="secondButton"
-                placeholder="Banner Secondary Button "
-                className="input border text-black border-black px-[1vw] w-full rounded-md py-[0.5vw]"
-                type="text"
-                // defaultValue={data?.secondButton}
-              />
-            </div>
-
-            <label htmlFor="secondLink" className="block mt-[1vw]">
-              Link Button
-            </label>
-            <div className="mt-3">
-              <input
-                id="secondLink"
-                name="secondLink"
-                placeholder="Secondary Button Link"
-                className="input border text-black border-black px-[1vw] w-full rounded-md py-[0.5vw]"
-                type="text"
-                // defaultValue={data?.secondLink}
-              />
-            </div>
-            
-          </div>
         </div>
 
-        <Button type="submit">Save Update</Button>
+       <SaveButton/>
     </form>
     </section>
     </>

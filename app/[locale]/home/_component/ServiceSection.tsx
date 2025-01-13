@@ -4,9 +4,11 @@ import Service2 from "@/public/client/services/service2.jpg";
 import Service3 from "@/public/client/services/service3.jpg";
 import Image from "next/image";
 import { getBrandServices } from "@/app/[locale]/home/lib/data";
+import { getServPageData } from "../../(protected)/pages/service/lib/data";
 
 export default async function ServiceSection() {
   const Service = await getBrandServices();
+  const data = await getServPageData();
 
   return (
     // <!-- services start -->
@@ -15,13 +17,13 @@ export default async function ServiceSection() {
         <div className="text-center pb-15 fadeInUp" data-delay="0.2">
           <h3 className="border border-[#bebebe] py-2.5 px-5 rounded-3xl md:text-base md:leading-5 text-sm inline-block font-normal mb-[5px]">
             <i className="ri-arrow-right-up-line text-primary"></i>
-            Services
+            {data?.tagline}
           </h3>
           <h2 className="xl:leading-[90px] xl:text-[80px] md:leading-[60px] md:text-[50px] leading-[50px] text-[40px] text-black-100 font-medium">
-            Apps, websites & branding
+            {data?.headline}
           </h2>
           <p className="md:text-xl md:leading-7 text-base mt-2">
-            Get expert solutions for every design need
+            {data?.desc}
           </p>
         </div>
 

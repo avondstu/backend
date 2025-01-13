@@ -6,6 +6,7 @@ import Header from "../Header";
 import { getBrandServices, getData } from "./lib/data";
 import Image from "next/image";
 import ServiceSection from "./_component/ServiceSection";
+import Footer from "../_component/Footer";
 
 
 export default async function page() {
@@ -63,6 +64,12 @@ export default async function page() {
 
         {/* Services */}
         <ServiceSection/>
+
+        {/* FAQ */}
+        
+
+        {/* Footer */}
+        <Footer/>
     </>
   );
 }
