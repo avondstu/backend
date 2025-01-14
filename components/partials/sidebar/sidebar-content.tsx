@@ -11,7 +11,7 @@ const SidebarContent = ({ children }: { children: React.ReactNode }) => {
     const [hoverConfig, setHoverConfig] = useMenuHoverConfig();
     const sidebarTheme = config.sidebarTheme !== 'light' ? `dark theme-${config.sidebarTheme}` : `theme-${config.sidebarTheme}`
 
-    if (config.menu || config.layout === "horizontal") return null
+    if (config.menuHidden || config.layout === "horizontal") return null
 
     if (config.sidebar === 'two-column') {
         return (
