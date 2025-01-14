@@ -13,7 +13,7 @@ export default function CreateClient() {
                 <CardHeader className='px-[2vw] pt-[2vw] grid grid-cols-2 justify-between items-center'>
                     <CardTitle>Add New Client</CardTitle>
                     <Button size='sm' className='bg-red-700 mt-0 py-[1vw] w-fit ml-auto' asChild>
-                        <Link href='/' className='text-3xl mt-0'>
+                        <Link href='/' className=' mt-0'>
                             <XIcon className='w-6 h-6 mr-2' /> Cancel
                         </Link>
                     </Button>

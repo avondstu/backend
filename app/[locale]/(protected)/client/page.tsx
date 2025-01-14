@@ -19,7 +19,7 @@ export default async function Page() {
                 <CardHeader className='px-[2vw] pt-[2vw] grid grid-cols-2 justify-between items-center'>
                     <CardTitle>Client Database</CardTitle>
                     <Button size='sm' className='bg-black py-[1vw] w-fit ml-auto' asChild>
-                        <Link href='/client/create' className='text-3xl'>
+                        <Link href='/client/create'>
                             <PlusCircle className='w-6 h-6 mr-2' /> Add Client
                         </Link>
                     </Button>

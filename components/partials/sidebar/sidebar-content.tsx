@@ -16,7 +16,7 @@ const SidebarContent = ({ children }: { children: React.ReactNode }) => {
     if (config.sidebar === 'two-column') {
         return (
 
-            <aside className={cn('fixed  z-50    h-full  xl:flex ', sidebarTheme, {
+            <aside className={cn('fixed  z-50    h-full  xl:flex shadow-base m-6 bottom-0 top-0 start-0 rounded-md', sidebarTheme, {
 
 
 
