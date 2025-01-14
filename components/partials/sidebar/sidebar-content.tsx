@@ -11,12 +11,12 @@ const SidebarContent = ({ children }: { children: React.ReactNode }) => {
     const [hoverConfig, setHoverConfig] = useMenuHoverConfig();
     const sidebarTheme = config.sidebarTheme !== 'light' ? `dark theme-${config.sidebarTheme}` : `theme-${config.sidebarTheme}`
 
-    if (config.menuHidden || config.layout === "horizontal") return null
+    if (config.menu || config.layout === "horizontal") return null
 
     if (config.sidebar === 'two-column') {
         return (
 
-            <aside className={cn('fixed  z-50    h-full  xl:flex hidden', sidebarTheme, {
+            <aside className={cn('fixed  z-50    h-full  xl:flex ', sidebarTheme, {
 
 
 
@@ -34,7 +34,7 @@ const SidebarContent = ({ children }: { children: React.ReactNode }) => {
             onMouseEnter={() => config.sidebar === 'classic' && setHoverConfig({ hovered: true })}
             onMouseLeave={() => config.sidebar === 'classic' && setHoverConfig({ hovered: false })}
 
-            className={cn('fixed  z-50 w-[248px]  bg-sidebar  shadow-base    xl:block hidden ', sidebarTheme, {
+            className={cn('fixed  z-50 w-[248px]  bg-sidebar  shadow-base    xl:block  ', sidebarTheme, {
                 'w-[72px]': config.collapsed && config.sidebar !== 'compact',
                 'border-b': config.skin === 'bordered',
                 'shadow-base': config.skin === 'default',
