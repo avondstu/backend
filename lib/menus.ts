@@ -92,9 +92,9 @@ export function getMenuList(pathname: string,): Group[] {
           submenus: [],
         },
         {
-          id: "services",
+          id: "services-list",
           href: "/company/services",
-          label: ("services"),
+          label: ("services list"),
           active: pathname.includes("/company/services"),
           icon: "heroicons-outline",
           submenus: [],

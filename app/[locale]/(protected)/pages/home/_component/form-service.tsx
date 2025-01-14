@@ -8,7 +8,7 @@ import { ServicePage } from '@prisma/client'
 import { AlertCircle } from 'lucide-react'
 import React from 'react'
 import { useFormState, useFormStatus } from 'react-dom'
-import { editServPage } from '../lib/action'
+import { editServPage } from '../../service/lib/action'
 
 interface formServicePages{
   data?: ServicePage | null

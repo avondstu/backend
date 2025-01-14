@@ -1,3 +1,5 @@
+"use server"
+
 import prisma from "@/lib/prisma";
 import { schemaCompany } from "@/lib/schema";
 import { ActionResult } from "@/types";
@@ -10,7 +12,7 @@ export async function editCompanyInformatiom(
 ):Promise<ActionResult> {
 
     const validate = schemaCompany.safeParse({
-        nama : formData.get('companyName'),
+        name : formData.get('companyName'),
         whatsapp : formData.get('whatsapp'),
         email : formData.get('email'),
         iglink : formData.get('iglink'),
