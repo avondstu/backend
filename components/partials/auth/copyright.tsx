@@ -2,7 +2,7 @@
 
 const Copyright = () => {
     const currentYear = new Date().getFullYear();
-  return <>Copyright {currentYear}, Dashcode All Rights Reserved.</>;
+  return <>Copyright {currentYear}, Avond Studio Admin Dashboard.</>;
 };
 
 export default Copyright;

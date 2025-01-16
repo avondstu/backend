@@ -1,5 +1,6 @@
 'use client'
 import Image from 'next/image';
+import avondImage from '@/public/images/logo/avond.png'
 import { useTheme } from "next-themes";
 
 const Logo = () => {
@@ -7,15 +8,11 @@ const Logo = () => {
   return (
     <div>
       <Image
-        src={
-          mode === "light"
-            ? "/images/logo/logo.svg"
-            : "/images/logo/logo-white.svg"
-        }
+        src={avondImage}
         alt=""
         width={300}
         height={300}
-        className=" w-36 "
+        className=" w-12 "
       />
     </div>
   );

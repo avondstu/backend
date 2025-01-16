@@ -11,6 +11,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from "zod";
 import { cn } from "@/lib/utils"
 import { Loader2 } from 'lucide-react';
+import { loginUser } from '@/action/auth-action';
 import { toast } from "sonner"
 import { useRouter } from '@/components/navigation';
 
@@ -49,7 +50,23 @@ const LoginForm = () => {
   const toggleVisibility = () => setIsVisible(!isVisible);
 
   const onSubmit = (data: z.infer<typeof schema>) => {
-    console.log(data)
+    startTransition(async () => {
+      try {
+        const response = await loginUser(data);
+
+        if (!!response.error) {
+          toast("Event has been created", {
+            description: "Sunday, December 03, 2023 at 9:00 AM",
+
+          })
+        } else {
+          router.push('/pages/home');
+          toast.success("Successfully logged in");
+        }
+      } catch (err: any) {
+        toast.error(err.message);
+      }
+    });
   };
 
   return (
