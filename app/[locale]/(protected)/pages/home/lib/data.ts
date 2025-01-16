@@ -29,3 +29,18 @@ export async function getServPageData() {
         return null
     }
 }
+
+export async function getProjPageData() {
+    try {
+        const response = await prisma.projectPage.findFirst({
+            where:{
+                id:1
+            }
+        })
+
+        return response
+    } catch (error) {
+        console.log(error)
+        return null
+    }
+}

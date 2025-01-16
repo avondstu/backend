@@ -46,3 +46,9 @@ export const schemaCompany = z.object({
     linkedin : z.string({required_error:'Wajib Di Isi'}),
     description : z.string({required_error:'Wajib Di Isi'}).min(20,{message:'Min. 20 Karakter'}),
 })
+
+export const schemaProjectSection = z.object({
+    tagline : z.string({required_error:'Wajib Di Isi'}),
+    headline : z.string({required_error:'Wajib Di Isi'}).min(5,{message:'Min.5 Karakter'}),
+    description: z.string({required_error:'Wajib Di Isi'}).min(10,{message:'Min. 10 Karakter'})
+})

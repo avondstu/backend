@@ -1,12 +1,16 @@
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable react/no-unescaped-entities */
 import React from "react";
 import Shape from '@/public/client/shapes/shape1.png'
 import Shape2 from '@/public/client/shapes/shape2.png'
 
+
 import Header from "./Header";
 import { getBrandServices, getData } from "./lib/data";
 import Image from "next/image";
-import ServiceSection from "./home/_component/ServiceSection";
+import ServiceSection from "./_component/ServiceSection";
 import Footer from "./_component/Footer";
+import ProjectSection from "./_component/ProjectSection";
 
 
 export default async function page() {
@@ -61,6 +65,29 @@ export default async function page() {
             </div>
         </div>
         </section>
+
+        {/* About */}
+    
+    <section className="">
+        <div className="container">
+            <div className="lg:w-[80%] w-full text-center mx-auto bg-black-200 lg:py-[70px] lg:px-20 py-10 px-10 lg:rounded-[40px] rounded-[30px] fadeInUp"
+                data-delay="0.2">
+                <h3 className="md:text-3xl md:leading-[48px] text-2xl leading-9 text-white">
+                Every morning, we wake up and seek new opportunities to tell stories about the things that you believe.  <span className="text-[#0300ff]">These stories act as voices that turn into trust and reputation.</span> With the right stories to tell, every day seems like the right chance to build a reputation and convince the right ones.</h3>
+                <div className="pt-12.5 flex flex-col items-center">
+                    {/* <img src="assets/images/about/founder.png" alt="founder" title="founder"
+                        className="w-20 h-20 rounded-full"> */}
+                    <h2 className="pt-2.5 lg:text-3xl text-2xl text-white">Tanvir Hossain</h2>
+                    <p className="text-white">Founder of Designpro</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    {/* Project */}
+    <ProjectSection/>
+
 
         {/* Services */}
         <ServiceSection/>

@@ -92,12 +92,39 @@ model HomePage{
   updated_at DateTime @updatedAt
 }
 
+
 model ServicePage {
   id            Int    @id @default(autoincrement())
   tagline       String @db.VarChar(255)
   headline      String @db.VarChar(255)
   desc          String @db.VarChar(255)
 
+  
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
+
+model ProjectPage {
+  id            Int    @id @default(autoincrement())
+  tagline       String @db.VarChar(255)
+  headline      String @db.VarChar(255)
+  mainButton    String @db.VarChar(255)
+  mainLink      String @db.VarChar(255)
+  desc          String @db.VarChar(255)
+
+  
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
+
+model ProjectPortfolio {
+  id            Int    @id @default(autoincrement())
+
+  nama    String @db.VarChar(255)
+  category  OurServices
+  description String @db.VarChar(255)
   
 
   created_at DateTime @default(now())

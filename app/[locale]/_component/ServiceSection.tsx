@@ -3,8 +3,8 @@ import Service1 from "@/public/client/services/service1.jpg";
 import Service2 from "@/public/client/services/service2.jpg";
 import Service3 from "@/public/client/services/service3.jpg";
 import Image from "next/image";
-import { getBrandServices } from "@/app/[locale]/home/lib/data";
-import { getServPageData } from "../../(protected)/pages/service/lib/data";
+import { getBrandServices } from "../lib/data";
+import { getServPageData } from "../(protected)/pages/service/lib/data";
 
 export default async function ServiceSection() {
   const Service = await getBrandServices();
