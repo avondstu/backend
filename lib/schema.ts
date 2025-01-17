@@ -52,3 +52,9 @@ export const schemaProjectSection = z.object({
     headline : z.string({required_error:'Wajib Di Isi'}).min(5,{message:'Min.5 Karakter'}),
     description: z.string({required_error:'Wajib Di Isi'}).min(10,{message:'Min. 10 Karakter'})
 })
+
+export const schemaProjectPortfolio = z.object({
+    name: z.string({required_error:'Wajib Di Isi'}),
+    category: z.string({required_error:'Wajib Di Isi'}),
+    description : z.string({required_error:'Wajib Di Isi'})
+})

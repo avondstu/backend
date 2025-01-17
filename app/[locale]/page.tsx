@@ -85,12 +85,14 @@ export default async function page() {
     </section>
 
 
-    {/* Project */}
-    <ProjectSection/>
+  
 
 
         {/* Services */}
         <ServiceSection/>
+
+          {/* Project */}
+    <ProjectSection/>
 
         {/* FAQ */}
         

@@ -50,7 +50,7 @@ export async function editHome(
         }
     }
 
-    return redirect('/');
+    return redirect('/pages/home');
 }
 
 export async function editServPage(
@@ -89,7 +89,7 @@ export async function editServPage(
         }
     }
 
-    return redirect('/')
+    return redirect('/pages/home')
 }
 
 export async function editProjectSection(
@@ -111,7 +111,7 @@ export async function editProjectSection(
     }
 
     try {
-        await prisma.servicePage.update({
+        await prisma.projectPage.update({
             where: {
                 id:id
             },

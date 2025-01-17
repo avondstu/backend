@@ -35,7 +35,7 @@ export function getMenuList(pathname: string,): Group[] {
   return [
     {
       groupLabel: ("CRM"),
-      id: "dashboard",
+      id: "crm",
       menus: [
         {
           id: "client",
@@ -96,6 +96,14 @@ export function getMenuList(pathname: string,): Group[] {
           href: "/company/services",
           label: ("services list"),
           active: pathname.includes("/company/services"),
+          icon: "heroicons-outline",
+          submenus: [],
+        },
+        {
+          id: "project-list",
+          href: "/company/projects",
+          label: ("Project List"),
+          active: pathname.includes("/company/projects"),
           icon: "heroicons-outline",
           submenus: [],
         },

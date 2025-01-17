@@ -12,7 +12,7 @@ export default async function ServiceSection() {
 
   return (
     // <!-- services start -->
-    <section id="services" className="lg:pt-25 pt-15 mb-[10vw]">
+    <section id="services" className="lg:pt-25 pt-15">
       <div className="container">
         <div className="text-center pb-15 fadeInUp" data-delay="0.2">
           <h3 className="border border-[#bebebe] py-2.5 px-5 rounded-3xl md:text-base md:leading-5 text-sm inline-block font-normal mb-[5px]">

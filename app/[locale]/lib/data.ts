@@ -26,3 +26,14 @@ export async function getBrandServices() {
         return null
     }
 }
+
+export async function getProjectData() {
+    try {
+        const response = await prisma.projectPortfolio.findMany({})
+
+        return response
+    } catch (error) {
+        console.log(error)
+        return null
+    }
+}
